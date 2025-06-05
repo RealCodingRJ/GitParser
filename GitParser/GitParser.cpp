@@ -83,5 +83,5 @@ int main() {
 
 	createCommand(route.route);
 
-
+	return 0;
 }
