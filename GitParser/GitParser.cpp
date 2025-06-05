@@ -31,6 +31,11 @@ static void createUsersInput(std::string inputMessage) {
 	std::cin >> inputMessage;
 }
 
+struct NameInitProject {
+
+	std::string initProject;
+};
+
 struct cdCommand {
 
 	std::string cdDir;
@@ -57,6 +62,7 @@ int main() {
 	ClonedProd prod;
 	cdCommand cmdDir;
 	BranchCheckout checkout;
+	NameInitProject initProject;
 
 	printRoutedMessage("Enter Route to Pick: ");
 	createUsersInput(route.route);
@@ -90,6 +96,16 @@ int main() {
 		createCommand("git add -A");
 		createCommand("git commit -m added code to route");
 		createCommand("git push -u origin main");
+
+	}
+
+	if (route.route == "init") {
+
+		printRoutedMessage("Enter Name for Branch: ");
+
+		std::cin >> initProject.initProject;
+
+		createCommand("git init " + initProject.initProject);
 
 	}
 
