@@ -41,6 +41,10 @@ struct ClonedProd {
 	std::string prod;
 };
 
+struct BranchCheckout {
+	std::string branchID;
+};
+
 struct CommandRoute{
 
 	std::string route;
@@ -52,6 +56,7 @@ int main() {
 	CommandRoute route;
 	ClonedProd prod;
 	cdCommand cmdDir;
+	BranchCheckout checkout;
 
 	printRoutedMessage("Enter Route to Pick: ");
 	createUsersInput(route.route);
@@ -88,8 +93,16 @@ int main() {
 
 	}
 
+	if (route.route == "branch") {
 
-	createCommand(route.route);
+		printRoutedMessage("Enter Name for Branch: ");
 
+		std::cin >> checkout.branchID;
+
+		createCommand("git checkout -b " + );
+	}
+
+
+	system("pause > 0");
 	return 0;
 }
