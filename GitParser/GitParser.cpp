@@ -2,6 +2,13 @@
 #include <Windows.h>
 
 
+void printRoutedMessage(const std::string routedMessage);
+void printRoutedMessage(const std::string routedMessage) {
+
+	std::cout << routedMessage << std::endl;
+
+}
+
 static void createCommand(std::string gitCommand) {
 
 	ShellExecuteA(nullptr, "open", gitCommand.c_str(), nullptr, nullptr, SW_SHOWDEFAULT);
@@ -46,6 +53,7 @@ int main() {
 	ClonedProd prod;
 	cdCommand cmdDir;
 
+	printRoutedMessage("Enter Route to Pick: ");
 	createUsersInput(route.route);
 
 	if (route.route == "add") {
