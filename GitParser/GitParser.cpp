@@ -8,16 +8,26 @@ static void createCommand(std::string gitCommand) {
 
 }
 
-void cloneProject(const std::string clonedProject) {
+static void cloneProject(const std::string clonedProject) {
 
 	ShellExecuteA(nullptr, "open", clonedProject.c_str(), nullptr, nullptr, SW_SHOWDEFAULT);
 
+}
+
+static void createDirectoryForProjectGit(std::string commandCD) {
+
+	ShellExecuteA(nullptr, "open", commandCD.c_str(), nullptr, nullptr, SW_SHOWDEFAULT);
 }
 
 static void createUsersInput(std::string inputMessage) {
 
 	std::cin >> inputMessage;
 }
+
+struct cdCommand {
+
+	std::string cdDir;
+};
 
 struct ClonedProd {
 
@@ -34,6 +44,7 @@ int main() {
 
 	CommandRoute route;
 	ClonedProd prod;
+	cdCommand cmdDir;
 
 	createUsersInput(route.route);
 
@@ -50,6 +61,15 @@ int main() {
 
 		std::cin >> prod.prod;
 		cloneProject("git clone " + prod.prod);
+	}
+
+	if (route.route == "cd") {
+
+		std::cout << "Enter URL: " << std::endl;
+		std::cin >> cmdDir.cdDir;
+
+		createDirectoryForProjectGit("cmd /c cd " + cmdDir.cdDir);
+
 	}
 
 	if (route.route == "All") {
